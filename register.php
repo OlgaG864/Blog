@@ -1,3 +1,9 @@
+<?php 
+
+include('./app/controllers/users.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +17,7 @@
   <?php include("./app/includes/header.php");?>
 
     <div class="auth-content">
-      <form action="register.html" method="post">
+      <form action="register.php" method="post">
         <h2 class="form-title">Register</h2>
 
         <div class="msg">
@@ -39,7 +45,7 @@
             Register
           </button>
         </div>
-        <p>Or <a href="login.html">Sign in</a></p>
+        <p>Or <a href="<?php echo BASE_URL. '/login.php'?>">Sign in</a></p>
       </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

@@ -28,7 +28,7 @@
           </button>
         </div>
 
-        <p>Or <a href="register.html">Register now</a></p>
+        <p>Or <a href="<?php echo BASE_URL. '/register.php'?>">Register now</a></p>
       </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
