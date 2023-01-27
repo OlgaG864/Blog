@@ -1,5 +1,7 @@
 <?php 
 function validateUser($user){
+
+    
     $errors=array();
 
     if(empty($user['username'])){
@@ -15,9 +17,33 @@ function validateUser($user){
     if(($user['passwordConf']!==$_POST['password'])){
         array_push($errors,'Password do not match');
     }
+    $existingUser=selectOne('users',['email'=>$user['email']]);
+if(isset($existingUser)) {
+    array_push($errors,'Email already exist go to sighn in');
+}
+
     return $errors;
 
 }
+
+function validateLogin($user){
+
+    
+    $errors=array();
+
+   
+    
+    if(empty($user['username'])){
+        array_push($errors,'wrong password');
+    }
+    if(empty($user['password'])){
+        array_push($errors,'wrong password');
+    }
+    return $errors;
+
+}
+
+
 
 
 ?>

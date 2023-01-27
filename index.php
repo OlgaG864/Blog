@@ -1,4 +1,10 @@
-<?php include("path.php") ?>
+<?php 
+include("path.php");
+include(ROOT_PATH.'/app/database/db.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +27,9 @@
   </head>
   <body>
   <?php include("./app/includes/header.php");?>
+  <?php include("./app/includes/messages.php");?>
 
+ 
     <div class="page-wrapper">
       <div class="post-slider">
         <h1 class="slider-title">Trending posts</h1>
