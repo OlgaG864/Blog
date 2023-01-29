@@ -1,4 +1,5 @@
-<?php include("../../path.php")?>
+<?php include("../../path.php");?>
+<?php include(ROOT_PATH.'/app/controllers/topics.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,29 +35,18 @@
           <a href="index.php" class="btn btn-big">Manage topics</a>
         </div>
         <div class="content">
-          <h2 class="page-title">Add posts</h2>
-          <form action="create.html" method="post">
+          <h2 class="page-title">Add topic</h2>
+          <form action="create.php" method="post">
             <div>
-              <label>Title</label>
-              <input type="text" name="title" class="text-input" />
+              <label>Name</label>
+              <input type="text" name="name" value="<?php echo $name?>" class="text-input" />
             </div>
             <div>
-              <textarea name="body" class="mytextarea"></textarea>
+              <textarea name="description" value="<?php echo $description?>" class="mytextarea"></textarea>
             </div>
+           
             <div>
-              <label>Image</label>
-              <input type="file" name="image" class="text-input" />
-            </div>
-            <div>
-              <label>Topic</label>
-              <select name="topic" class="text-input">
-                <option value="Poetry">Poetry</option>
-                <option value="Poetry">Poetry</option>
-                <option value="Poetry">Poetry</option>
-              </select>
-            </div>
-            <div>
-              <button type="submit" class="btn btn-big">Add post</button>
+              <button type="submit" name="add-topic" class="btn btn-big">Add topic</button>
             </div>
           </form>
         </div>
