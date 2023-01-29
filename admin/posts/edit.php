@@ -56,7 +56,7 @@
               </select>
             </div>
             <div>
-              <button type="submit" class="btn btn-big">Update posts</button>
+              <button type="submit" class="btn btn-big">Update post</button>
             </div>
           </form>
         </div>

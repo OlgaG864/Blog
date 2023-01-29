@@ -50,6 +50,7 @@
 
                 <td><a href="#" class="edit">Edit</a></td>
                 <td><a href="#" class="delete">Delete</a></td>
+                <td><a href="#" class="publish">Publish</a></td>
               </tr>
               <tr>
                 <td>2</td>
@@ -57,6 +58,7 @@
 
                 <td><a href="#" class="edit">Edit</a></td>
                 <td><a href="#" class="delete">Delete</a></td>
+                <td><a href="#" class="publish">Publish</a></td>
               </tr>
             </tbody>
           </table>

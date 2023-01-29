@@ -1,4 +1,5 @@
-<?php include("../../path.php")?>
+<?php include("../../path.php");?>
+ <?php include(ROOT_PATH."/app/controllers/topics.php");?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,28 +37,27 @@
         <div class="content">
         
         <h2 class="page-title">Manage topics</h2>
+        <?php include( ROOT_PATH. "/app/includes/messages.php");?>
+
           <table>
             <thead>
               <th>SN</th>
-              <th>SN</th>
-              <th>SN</th>
+              <th>Name</th>
+              <th>Action</th>
               <th colspan="2">Action</th>
             </thead>
             <tbody>
+                <?php foreach ($topics as$key=>$topic):?>
               <tr>
-                <td>1</td>
-                <td>This is the first topic</td>
+             
+                <td><?php echo $key +1;?></td>
+                <td><?php echo $topic['name'];?></td>
 
-                <td><a href="#" class="edit">Edit</a></td>
-                <td><a href="#" class="delete">Delete</a></td>
+                <td><a href="edit.php?id=<?php echo $topic['id'];?>" class="edit">Edit</a></td>
+                <td><a href="index.php?del_id=<?php echo $topic['id'];?>" class="delete">Delete</a></td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>This is the second topic</td>
+        <?php endforeach; ?>
 
-                <td><a href="#" class="edit">Edit</a></td>
-                <td><a href="#" class="delete">Delete</a></td>
-              </tr>
             </tbody>
           </table>
         </div>
