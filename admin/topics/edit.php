@@ -21,6 +21,8 @@
     />
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <link rel="stylesheet" href="../../assets/css/admin.css" />
+    <link rel="stylesheet" href="../../admin/editor/css/widgEditor.css" />
+    <script src="../../admin/editor/scripts/widgEditor.js"></script>
   </head>
   <body>
 
@@ -46,7 +48,7 @@
             </div>
             <label>Description</label>
             <div>
-              <textarea name="description" value="<?php echo $description;?>"class="mytextarea"></textarea>
+            <textarea class="widgEditor nothing" name="description" value="<?php echo $description?>" >Some text here</textarea>
             </div>
          
             <div>
