@@ -25,7 +25,7 @@ if(isset($_POST['add-topic'])){
 
     }else{
         $name=$_POST['name'];
-        $description=$_POST['description'];;
+        $description=$_POST['description'];
     }
 
    

@@ -37,6 +37,8 @@
         <div class="content">
           <h2 class="page-title">Add topic</h2>
           <form action="create.php" method="post">
+          <?php include(ROOT_PATH .'/app/helpers/formrrors.php')?>
+ 
             <div>
               <label>Name</label>
               <input type="text" name="name" value="<?php echo $name?>" class="text-input" />
