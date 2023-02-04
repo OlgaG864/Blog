@@ -48,7 +48,7 @@
               <input type="text" name="name" value="<?php echo $name?>" class="text-input" />
             </div>
             <div>
-              <textarea class="widgEditor nothing" name="description" value="<?php echo $description?>" >Some text here</textarea>
+              <textarea name="description" value="<?php echo $description?>" >Add description</textarea>
             </div>
            
             <div>

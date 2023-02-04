@@ -1,4 +1,6 @@
+
 <?php include("../../path.php")?>
+<?php include(ROOT_PATH.'/app/controllers/posts.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,18 +34,21 @@
 
       <div class="admin-content">
         <div class="button-group">
-          <a href="create.php" class="btn btn-big">Add post</a>
+          <a href="create.php" class="btn btn-big">Add posts</a>
           <a href="index.php" class="btn btn-big">Manage posts</a>
         </div>
         <div class="content">
-          <h2 class="page-title">Edit post</h2>
-          <form action="create.html" method="post">
+          <h2 class="page-title">Add posts</h2>
+
+          <form action="edit.php" method="post" >
+          <input type="hidden" name="id" value="<?php echo $id;?>"  />
+          <?php include(ROOT_PATH .'/app/helpers/formrrors.php')?>
             <div>
               <label>Title</label>
-              <input type="text" name="title" class="text-input" />
+              <input type="text" name="title" value="<?php echo $title;?>" class="text-input" />
             </div>
             <div>
-            <textarea class="widgEditor nothing" name="description" value="<?php echo $description?>" >Some text here</textarea>
+            <textarea value="<?php echo $body;?>" name="body" >Some text here</textarea>
             </div>
             <div>
               <label>Image</label>
@@ -51,14 +56,36 @@
             </div>
             <div>
               <label>Topic</label>
-              <select name="topic" class="text-input">
-                <option value="Poetry">Poetry</option>
-                <option value="Poetry">Poetry</option>
-                <option value="Poetry">Poetry</option>
+              <select name="topic_id" class="text-input">
+              <?php foreach ($topics as $key=>$topic):?>
+                <?php if(!empty($topic_id)&& $topic_id ==$topic['id']):?>
+                <option selected value="<?php echo $topic['id'] ?>"><?php echo $topic['name'] ?></option>
+                <?php else:?>
+                    <option value="<?php echo $topic['id'] ?>"><?php echo $topic['name'] ?></option>
+                    <?php endif ;?>
+                <?php endforeach;?>
               </select>
+              <div>
+                <?php if(empty($published)):?>
+
+                <label>
+                <input type="checkbox" name="published"  />
+                Publish
+                </label>
+                <?php else:?>
+                    <label>
+                <input type="checkbox" name="published" checked />
+                Publish
+                </label>
+
+
+                    <?php endif;?>
+            
+              </div>
+             
             </div>
             <div>
-              <button type="submit" class="btn btn-big">Update post</button>
+              <button type="submit" name="edit-post" class="btn btn-big">Add post</button>
             </div>
           </form>
         </div>
@@ -75,4 +102,3 @@
     <script src="../../assets/javascript/js.js"></script>
   </body>
 </html>
-

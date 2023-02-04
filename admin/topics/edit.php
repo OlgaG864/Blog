@@ -40,6 +40,7 @@
           <h2 class="page-title">Edit topics</h2>
           <form action="edit.php" method="post">
           <input type="hidden" name="id" value="<?php echo $id;?>"  />
+          <?php include(ROOT_PATH .'/app/helpers/formrrors.php')?>
 
             <div>
               <label>Name</label>
@@ -48,7 +49,7 @@
             </div>
             <label>Description</label>
             <div>
-            <textarea class="widgEditor nothing" name="description" value="<?php echo $description?>" >Some text here</textarea>
+            <textarea name="description" value="<?php echo $description?>" >Some text here</textarea>
             </div>
          
             <div>
