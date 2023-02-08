@@ -33,7 +33,7 @@ if(isset($_POST['add-post'])){
     
     if(count($errors)==0){
         unset($_POST['add-post']);
-        $_POST['user_id']=1;
+        $_POST['user_id']=$_SESSION['id'];
         $_POST['published']=isset($_POST['published']) ? 1:0;
         $_POST['body']=htmlentities($_POST['body']);
     
