@@ -90,13 +90,23 @@ if(isset($_POST['edit-post'])){
 
 }
 
-if(isset($_GET['del_id'])){
-    $id=$_GET['del_id'];
+if(isset($_GET['delete_id'])){
+    $id=$_GET['delete_id'];
     $count=delete($table,$id);
     $_SESSION['message']='Post deleted';
     $_SESSION['type']='error';
-    header("location: ".BASE_URL.'/admin/topics/index.php');
+    header("location: ".BASE_URL.'/admin/posts/index.php');
     exit();
 
+}
+
+if(isset($_GET['published'])&&isset($_GET['p_id'])){
+    $published =$_GET['published'];
+    $p_id=$_GET['p_id'];
+    $count=update('posts',$p_id,['published'=>$published]);
+    $_SESSION['message']='Post changed';
+    $_SESSION['type']='success';
+    header("location: ".BASE_URL.'/admin/posts/index.php');
+    exit();
 }
 ?>

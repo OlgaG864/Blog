@@ -1,4 +1,5 @@
 <?php include("../../path.php")?>
+<?php include(ROOT_PATH.'/app/controllers/users.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,19 +37,20 @@
         <div class="content">
         <form action="create.php" method="post">
           <h2 class="page-title">Add users</h2>
+          <?php include (ROOT_PATH ."/app/helpers/formrrors.php")?>;
           <div>
           <label>Username</label>
-          <input type="text" name="username"  class="text-input" />
+          <input type="text" name="username" value="<?php echo $username;?>"  class="text-input" />
   
         </div>
         <div>
           <label>Email</label>
-          <input type="text" name="email" class="text-input" />
+          <input type="text" name="email" value="<?php echo $email;?>" class="text-input" />
       
         </div>
         <div>
           <label>Password</label>
-          <input type="text" name="password" class="text-input" />
+          <input type="text" name="password" value="<?php echo $password;?>" class="text-input" />
     
      
         </div>
@@ -57,7 +59,19 @@
           <input type="text" name="passwordConf" class="text-input" />
         </div>
         <div>
-          <button type="submit" name="" class="btn btn big">
+            <?php if (isset($admin)):?>
+            <labe>Admin
+                
+        <input type="checkbox" name="admin" checked>
+
+            </labe>
+            <?php else:?>
+                <input type="checkbox" name="admin" >
+
+                <?php endif;?>
+        </div>
+        <div>
+          <button type="submit" name="create-admin" class="btn btn big">
            Add user
           </button>
         </div>
