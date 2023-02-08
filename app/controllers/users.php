@@ -36,7 +36,7 @@ if( isset($_POST['register-btn']) ){
      $_SESSION['type']='success';
 
      if($_SESSION['username']){
-        header('location:'.BASE_URL.'/dashboard.php');
+        header('location:'.BASE_URL.'/admin/dashboard.php');
      }else{
         header('location:'.BASE_URL.'/index.php');
      }
@@ -92,7 +92,7 @@ if( isset($_POST['register-btn']) ){
       $_SESSION['type']='success';
  
       if($_SESSION['username']){
-         header('location:'.BASE_URL.'/dashboard.php');
+         header('location:'.BASE_URL.'/admin/dashboard.php');
       }else{
          header('location:'.BASE_URL.'/index.php');
       }
