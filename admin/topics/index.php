@@ -43,7 +43,7 @@
             <thead>
               <th>SN</th>
               <th>Name</th>
-              <th>Action</th>
+             
               <th colspan="2">Action</th>
             </thead>
             <tbody>

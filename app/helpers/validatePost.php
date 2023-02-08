@@ -20,7 +20,14 @@ function validatePost($post){
     }
     $existingPost=selectOne('posts',['title'=>$post['title']]);
 if(isset($existingPost)) {
-    array_push($errors,'Title is existing');
+    if(isset($post['edit-post'])&& $existingPost['id']!=$post['id']){
+
+        array_push($errors,'Title is existing');
+    }
+
+    if(isset($post['add-post'])){
+        array_push($errors,'Title is existing');
+    }
 }
 
     return $errors;

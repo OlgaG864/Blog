@@ -46,8 +46,8 @@
           <table>
             <thead>
               <th>SN</th>
-              <th>SN</th>
-              <th>SN</th>
+              <th>Title</th>
+              <th>Author</th>
               <th colspan="2">Action</th>
             </thead>
             <tbody>
