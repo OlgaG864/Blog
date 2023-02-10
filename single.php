@@ -2,6 +2,7 @@
 <?php 
 include("path.php");
 include(ROOT_PATH .'/app/controllers/posts.php');
+$topics=selectAll('topics');
 
 
 if(isset($_GET['id'])){
@@ -96,7 +97,7 @@ $posts=selectAll('posts',['published'=>1]);
             <h2 class="section-title">Topics</h2>
             <ul>
             <?php foreach ($topics as $topic):?>
-              <li><a href="#"><?php echo $topic['name'];?></a></li>
+              <li><a href="<?php echo BASE_URL .'/index.php?t_id='.$topic['id']?>"><?php echo $topic['name'];?></a></li>
         <?php endforeach; ?>
             </ul>
           </div>
