@@ -4,6 +4,21 @@ include("path.php");
 include(ROOT_PATH .'/app/controllers/topics.php');
 
 
+$posts=array();
+$postTitle='Recent Posts';
+
+if(isset($_POST['search-term'])){
+
+ $postTitle="You serached for " . $_POST ['search-term'];
+$posts=searchPosts($_POST['search-term']);
+
+}else{
+  $posts=getPublishedPosts();
+
+};
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -32,169 +47,73 @@ include(ROOT_PATH .'/app/controllers/topics.php');
 
  
     <div class="page-wrapper">
+
       <div class="post-slider">
         <h1 class="slider-title">Trending posts</h1>
         <i class="fas fa-chevron-left prev"></i>
         <i class="fas fa-chevron-right next"></i>
 
         <div class="post-wrapper">
+
+          <?php foreach($posts as $post):?>
           <div class="post">
             <img
-              src="https://64.media.tumblr.com/e816f3682bd13f440383af719c8db95a/tumblr_pr610nidtz1tawn8uo1_1280.jpg"
+              src="<?php echo BASE_URL .'/assets/images/freedom-g31f6c843a_640.jpg';?>"
               alt=""
               class="slider-image"
             />
             <div class="post-info">
               <h4>
                 <a href="single.html"
-                  >One day your life will flash before your eyes</a
+                  ><?php echo $post['title'];?></a
                 >
               </h4>
-              <i class="far fa-user">Olga G.</i>
+              <i class="far fa-user"><?php echo $post['username'];?></i>
               &nbsp;
-              <i class="far fa-calendar">Today</i>
+              <i class="far fa-calendar"><?php echo date('F j,Y',strtotime($post['created_at']));?></i>
             </div>
           </div>
-          <div class="post">
-            <img
-              src="https://64.media.tumblr.com/e816f3682bd13f440383af719c8db95a/tumblr_pr610nidtz1tawn8uo1_1280.jpg"
-              alt=""
-              class="slider-image"
-            />
-            <div class="post-info">
-              <h4>
-                <a href="single.html"
-                  >One day your life will flash before your eyes</a
-                >
-              </h4>
-              <i class="far fa-user">Olga G.</i>
-              &nbsp;
-              <i class="far fa-calendar">Today</i>
-            </div>
+          <?php endforeach;?>
+     
           </div>
-          <div class="post">
-            <img
-              src="https://64.media.tumblr.com/e816f3682bd13f440383af719c8db95a/tumblr_pr610nidtz1tawn8uo1_1280.jpg"
-              alt=""
-              class="slider-image"
-            />
-            <div class="post-info">
-              <h4>
-                <a href="single.html"
-                  >One day your life will flash before your eyes</a
-                >
-              </h4>
-              <i class="far fa-user">Olga G.</i>
-              &nbsp;
-              <i class="far fa-calendar">Today</i>
-            </div>
-          </div>
-          <div class="post">
-            <img
-              src="https://64.media.tumblr.com/e816f3682bd13f440383af719c8db95a/tumblr_pr610nidtz1tawn8uo1_1280.jpg"
-              alt=""
-              class="slider-image"
-            />
-            <div class="post-info">
-              <h4>
-                <a href="single.html"
-                  >One day your life will flash before your eyes</a
-                >
-              </h4>
-              <i class="far fa-user">Olga G.</i>
-              &nbsp;
-              <i class="far fa-calendar">Today</i>
-            </div>
-          </div>
-          <div class="post">
-            <img
-              src="https://64.media.tumblr.com/e816f3682bd13f440383af719c8db95a/tumblr_pr610nidtz1tawn8uo1_1280.jpg"
-              alt=""
-              class="slider-image"
-            />
-            <div class="post-info">
-              <h4>
-                <a href="single.html"
-                  >One day your life will flash before your eyes</a
-                >
-              </h4>
-              <i class="far fa-user">Olga G.</i>
-              &nbsp;
-              <i class="far fa-calendar">Today</i>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="content clearfix">
         <div class="main-content">
-          <h1 class="recent-post-title">Recent Posts</h1>
-          <div class="post">
+          <h1 class="recent-post-title"><?php echo $postTitle;?></h1>
+
+          <?php foreach($posts as $post):?>
+
+            
+          <div class="post clearfix">
             <img
-              src="https://64.media.tumblr.com/e816f3682bd13f440383af719c8db95a/tumblr_pr610nidtz1tawn8uo1_1280.jpg"
+              src="<?php echo BASE_URL .'/assets/images/background-g348a3cb00_640.jpg';?>"
               alt=""
               class="post-image"
             />
             <div class="post-preview">
-              <h1><a href="single.html">The sweetest song</a></h1>
-              <i class="far fa-user">Olga G.</i>
+              <h1><a href="single.html"><?php echo $post['title'];?></a></h1>
+              <i class="far fa-user"><?php echo $post['username'];?></i>
               &nbsp;
-              <i class="far fa-calendar">Today</i>
+              <i class="far fa-calendar"><?php echo date('F j,Y',strtotime($post['created_at']));?></i>
               <p class="preview-text">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum
+            <?php echo substr($post['body'],0,150). '...'?>
               </p>
               <a href="single.html" class="btn read-more">Read more</a>
             </div>
           </div>
-          <div class="post">
-            <img
-              src="https://64.media.tumblr.com/e816f3682bd13f440383af719c8db95a/tumblr_pr610nidtz1tawn8uo1_1280.jpg"
-              alt=""
-              class="post-image"
-            />
-            <div class="post-preview">
-              <h1><a href="single.html">The sweetest song</a></h1>
-              <i class="far fa-user">Olga G.</i>
-              &nbsp;
-              <i class="far fa-calendar">Today</i>
-              <p class="preview-text">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum
-              </p>
-              <a href="single.html" class="btn read-more">Read more</a>
-            </div>
-          </div>
-          <div class="post">
-            <img
-              src="https://64.media.tumblr.com/e816f3682bd13f440383af719c8db95a/tumblr_pr610nidtz1tawn8uo1_1280.jpg"
-              alt=""
-              class="post-image"
-            />
-            <div class="post-preview">
-              <h1><a href="single.html">The sweetest song</a></h1>
-              <i class="far fa-user">Olga G.</i>
-              &nbsp;
-              <i class="far fa-calendar">Today</i>
-              <p class="preview-text">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum
-              </p>
-              <a href="single.html" class="btn read-more">Read more</a>
-            </div>
-          </div>
+
+            <?php endforeach;?>
+
+
+        
+         
         </div>
 
         <div class="sidebar">
           <div class="section search">
             <h2 class="section-title">Search</h2>
-            <form action="index.html" method="post">
+            <form action="index.php" method="post">
               <input
                 type="text"
                 name="search-term"

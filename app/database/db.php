@@ -4,10 +4,7 @@ session_start();
 
 require ('connect.php');
 
-function dd($value)//to be deleted
-{
-    echo "<pre>", print_r($value, true), "</pre>";
-}
+
 
 function executeQuery($sql,$data)
 {
@@ -121,4 +118,27 @@ function selectOne($table, $conditions)
         return $stmt->affected_rows;
     }
 
+
+    function getPublishedPosts(){
+        global $conn;
+        $sql="SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE published=?";
+        $stmt=executeQuery($sql,['published'=>1]);
+        $records=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $records;
+    }
+
+    
+    function searchPosts($term){
+        $match='%' . $term . '%';
+        global $conn;
+        $sql="SELECT 
+        p.*, u.username 
+        FROM posts AS p 
+        JOIN users AS u ON p.user_id=u.id 
+        WHERE published=?
+        AND p.title LIKE ? OR p.body LIKE ?";
+        $stmt=executeQuery($sql,['published'=>1, 'title'=>$match,'body'=>$match]);
+        $records=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $records;
+    }
 
