@@ -64,7 +64,7 @@ $posts=searchPosts($_POST['search-term']);
             />
             <div class="post-info">
               <h4>
-                <a href="single.html"
+                <a href="single.php?id=<?php echo $post['id'];?>"
                   ><?php echo $post['title'];?></a
                 >
               </h4>
@@ -92,14 +92,14 @@ $posts=searchPosts($_POST['search-term']);
               class="post-image"
             />
             <div class="post-preview">
-              <h1><a href="single.html"><?php echo $post['title'];?></a></h1>
+              <h1><a href="single.php?id=<?php echo $post['id'];?>"><?php echo $post['title'];?></a></h1>
               <i class="far fa-user"><?php echo $post['username'];?></i>
               &nbsp;
               <i class="far fa-calendar"><?php echo date('F j,Y',strtotime($post['created_at']));?></i>
               <p class="preview-text">
             <?php echo substr($post['body'],0,150). '...'?>
               </p>
-              <a href="single.html" class="btn read-more">Read more</a>
+              <a href="single.php?id=<?php echo $post['id'];?>" class="btn read-more">Read more</a>
             </div>
           </div>
 

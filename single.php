@@ -1,3 +1,19 @@
+
+<?php 
+include("path.php");
+include(ROOT_PATH .'/app/controllers/posts.php');
+
+
+if(isset($_GET['id'])){
+  $post=selectOne('posts',['id'=>$_GET['id']]);
+
+}
+
+$posts=selectAll('posts',['published'=>1]);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,6 +33,7 @@
 "
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <title><?php echo $post['title'];?>| OlgaInspires</title>
   </head>
   <body>
     <div id="fb-root"></div>
@@ -32,77 +49,10 @@
     <div class="page-wrapper">
       <div class="content clearfix">
         <div class="main-content single">
-          <h1 class="post-title">This is a title of a posts</h1>
+          <h1 class="post-title"><?php echo $post['title'];?></h1>
 
           <div class="post-content">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium unde aliquam libero odit quam beatae!
-            </p>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque,
-              veritatis itaque expedita eum nisi rerum repellendus perferendis
-              ipsum, ut aspernatur nesciunt soluta, eius quis ipsam ducimus
-              obcaecati hic quam recusandae.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              dignissimos, non error quae natus delectus esse ad cupiditate
-              alias sapiente veniam laboriosam repellat ullam velit tenetur
-              quasi assumenda corrupti accusantium vero aspernatur! Cupiditate
-              inventore fuga delectus consectetur. Fugiat, eius facilis!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium unde aliquam libero odit quam beatae!
-            </p>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque,
-              veritatis itaque expedita eum nisi rerum repellendus perferendis
-              ipsum, ut aspernatur nesciunt soluta, eius quis ipsam ducimus
-              obcaecati hic quam recusandae.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              dignissimos, non error quae natus delectus esse ad cupiditate
-              alias sapiente veniam laboriosam repellat ullam velit tenetur
-              quasi assumenda corrupti accusantium vero aspernatur! Cupiditate
-              inventore fuga delectus consectetur. Fugiat, eius facilis!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium unde aliquam libero odit quam beatae!
-            </p>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque,
-              veritatis itaque expedita eum nisi rerum repellendus perferendis
-              ipsum, ut aspernatur nesciunt soluta, eius quis ipsam ducimus
-              obcaecati hic quam recusandae.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              dignissimos, non error quae natus delectus esse ad cupiditate
-              alias sapiente veniam laboriosam repellat ullam velit tenetur
-              quasi assumenda corrupti accusantium vero aspernatur! Cupiditate
-              inventore fuga delectus consectetur. Fugiat, eius facilis!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium unde aliquam libero odit quam beatae!
-            </p>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque,
-              veritatis itaque expedita eum nisi rerum repellendus perferendis
-              ipsum, ut aspernatur nesciunt soluta, eius quis ipsam ducimus
-              obcaecati hic quam recusandae.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              dignissimos, non error quae natus delectus esse ad cupiditate
-              alias sapiente veniam laboriosam repellat ullam velit tenetur
-              quasi assumenda corrupti accusantium vero aspernatur! Cupiditate
-              inventore fuga delectus consectetur. Fugiat, eius facilis!
-            </p>
+     <?php echo $post['body'];?>
           </div>
         </div>
 
@@ -127,50 +77,27 @@
           </div>
           <div class="section popular">
             <h2 class="section-title">Popular</h2>
-            <div class="post">
+        
+            <?php foreach ($posts as $p):?>
+              <div class="post clearfix">
               <img
                 src="https://cdn.pixabay.com/photo/2020/12/28/20/45/frozen-lake-5868472_960_720.jpg"
                 alt=""
               />
-              <a href="" class="title"><h4>How to overcome your fears</h4></a>
+              <a href="" class="title"><h4><?php echo $p['title']?></h4></a>
             </div>
-            <div class="post clearfix">
-              <img
-                src="https://cdn.pixabay.com/photo/2020/12/28/20/45/frozen-lake-5868472_960_720.jpg"
-                alt=""
-              />
-              <a
-                href="https://cdn.pixabay.com/photo/2020/12/28/20/45/frozen-lake-5868472_960_720.jpg"
-                class="title"
-                ><h4>How to overcome your fears</h4></a
-              >
-            </div>
+            <?php endforeach ;?>
 
-            <div class="post clearfix">
-              <img
-                src="https://cdn.pixabay.com/photo/2020/12/28/20/45/frozen-lake-5868472_960_720.jpg"
-                alt=""
-              />
-              <a href="" class="title"><h4>How to overcome your fears</h4></a>
-            </div>
-            <div class="post clearfix">
-              <img
-                src="https://cdn.pixabay.com/photo/2020/12/28/20/45/frozen-lake-5868472_960_720.jpg"
-                alt=""
-              />
-              <a href="" class="title"><h4>How to overcome your fears</h4></a>
-            </div>
           </div>
+
+        
+       
           <div class="section topics">
             <h2 class="section-title">Topics</h2>
             <ul>
-              <li><a href="#">Poems</a></li>
-              <li><a href="#">Qutes</a></li>
-              <li><a href="#">Stories</a></li>
-              <li><a href="#">Inspiration</a></li>
-              <li><a href="#">Poems</a></li>
-              <li><a href="#">Poems</a></li>
-              <li><a href="#">Poems</a></li>
+            <?php foreach ($topics as $topic):?>
+              <li><a href="#"><?php echo $topic['name'];?></a></li>
+        <?php endforeach; ?>
             </ul>
           </div>
         </div>
